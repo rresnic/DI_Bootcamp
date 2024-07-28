@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-item {
+    flex-grow: 1;
+    width: 100%;
+
+
+}
+.diagonal {
+    width: 416px;
+    height: 416px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    line-height: 0;
+}
+.diagonal span {
+    display:inline-block;
+    width: 24px;;
+    height: 24px;
+    margin: 1px;
+}
+.diagonal span:nth-of-type(3n+1){
+    background-color: orange;
+
+}
+.diagonal span:nth-of-type(3n+2) {
+    background-color: coral;
+
+}
+.diagonal span:nth-of-type(3n) {
+    background-color: maroon;
+
+}
+.black-white {
+    background:
+        repeating-linear-gradient(90deg,
+            rgba(204, 204, 204, 0.5), rgba(204, 204, 204, 0.5) 23px,
+            white 23px, white 25px,
+            rgba(153, 153, 153, 0.5) 25px, rgba(153, 153, 153, 0.5) 48px,
+            white 48px, white 50px,
+            rgba(102, 102, 102, 0.5) 50px, rgba(102, 102, 102, 0.5) 73px,
+            white 73px, white 75px,
+            rgba(51, 51, 51, 0.5) 75px, rgba(51, 51, 51, 0.5) 98px,
+            white 98px, white 100px),
+        repeating-linear-gradient(0deg,
+            rgba(204, 204, 204, 0.5), rgba(204, 204, 204, 0.5) 23px,
+            white 23px, white 25px,
+            rgba(153, 153, 153, 0.5) 25px, rgba(153, 153, 153, 0.5) 48px,
+            white 48px, white 50px,
+            rgba(102, 102, 102, 0.5) 50px, rgba(102, 102, 102, 0.5) 73px,
+            white 73px, white 75px,
+            rgba(51, 51, 51, 0.5) 75px, rgba(51, 51, 51, 0.5) 98px,
+            white 98px, white 100px);
+    background-size: 100px 100px;
+
+}
+
+.tablecloth {
+    background-color: white;
+    background-image: 
+        linear-gradient(90deg, rgba(200, 0, 0, .5) 50%, transparent 50%),
+        linear-gradient(rgba(200, 0, 0, .5) 50%, transparent 50%);
+    background-size: 50px 50px;
+}
