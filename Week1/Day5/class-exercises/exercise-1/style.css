@@ -1,0 +1,25 @@
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-item {
+    flex-grow: 1;
+    height: 50px;
+    margin: 6px;
+    text-align: center;
+    background-color: aqua;
+}
+
+.top, .bottom {
+    width: 100%;
+}
+
+.middle {
+    width: 50%;
+    flex-grow:2;
+
+}
