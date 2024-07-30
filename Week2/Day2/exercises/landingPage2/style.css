@@ -1,0 +1,19 @@
+.background-imaged {
+    background-image:url("umbrella-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.navbar-transparent {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.hero-section {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
