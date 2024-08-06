@@ -1,0 +1,7 @@
+my_fav_numbers = set([13, 18, 36])
+my_fav_numbers.add(17)
+my_fav_numbers.add(34)
+my_fav_numbers.pop()
+friend_fav_numbers = set([11, 13, 17, 40])
+our_fav_numbers = my_fav_numbers.union(friend_fav_numbers)
+print(our_fav_numbers)
