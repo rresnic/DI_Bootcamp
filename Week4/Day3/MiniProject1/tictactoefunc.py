@@ -28,8 +28,6 @@ def get_full():
 
 display_board()
 def check_win():
-    if get_full():
-        return True
     for combination in winning_combinations:
         current_piece = current_board[combination[0]]
         all_correct = True
@@ -70,10 +68,14 @@ def player_input(player):
 print(check_win())
 def play():
     current_board = board_base
-    while not check_win():
+    while not check_win() and not get_full():
         move = player_input(current_player)
         current_board[move] = players[current_player]
         display_board()
+        if check_win():
+            print(f"Player {players[current_player]} won!")
+        elif get_full():
+            print("Cat's Game")
         change_player()
     print("Game over")
 
