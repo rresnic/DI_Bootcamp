@@ -51,12 +51,12 @@ HANGMAN_PICS = ['''
     #     The player can’t guess the same letter twice.
 
 guessed = set()
-
+errors = 0
 def display_board():
     print("***Hangman***")
     for char in display_word:
         print(char, end =" ")
-    print(HANGMAN_PICS[len(guessed)])
+    print(HANGMAN_PICS[errors])
     for char in guessed:
         print(char, end= ",")
     print("\n")
@@ -77,9 +77,9 @@ def check_win():
     return "".join(display_word) == word
 
 def check_loss():
-    return len(guessed) == 6
+    return errors == 6
 
-def swap_letters(character, display, target):
+def swap_letters(character, display_word, target):
     indices = [index for index, char in enumerate(target) if char == character]
     for index in indices:
         display_word[index] = character
@@ -91,6 +91,8 @@ def play():
         guess = player_move()
         if guess in word:
             swap_letters(guess, display_word, word)
+        else:
+            errors += 1
         display_board()
     if check_win():
         print("You won!")
