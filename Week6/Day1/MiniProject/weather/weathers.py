@@ -17,25 +17,11 @@ api_key = os.getenv('API_KEY')
 def get_local_timezone(lat, lon):
     tzf = TimezoneFinder()
     return tzf.timezone_at(lat=lat, lng=lon)
-print(f"API Key: {api_key}")
+# print(f"API Key: {api_key}")
 
 owm = OWM(api_key)
 reg = owm.city_id_registry()
-# mgr = owm.weather_manager()
-# tlv= reg.locations_for("Tel Aviv", country="IL", matching="exact")[0]
-# # weather_at_tlv = mgr.weather_at_coords(tlv.lat, tlv.lon).weather 
-# forecast_at_tlv = mgr.forecast_at_coords(tlv.lat, tlv.lon, interval='3h').forecast
-# print(forecast_at_tlv)
-# forecast_dict = forecast_at_tlv.to_dict()
-# weather_dict = weather_at_tlv.to_dict()
-# with open("TLV_today.json", "r") as f:
-# #     weather_dict = json.load(f)
-# with open("TLV_today_forc.json", "r") as f:
-#     forecast_dict = json.load(f)
 
-# # print(forecast_dict)
-# weathers = forecast_dict["weathers"]
-# print(weathers)
 # TODO separate some of these functions into modules
 def get_location_input():
     city = input("Please enter a city name (e.g. Chicago): ")
@@ -104,6 +90,7 @@ def get_local_sunrise_sunset(weather_obj, lat, lon):
     return f"Sunrise: {sunrise}, Sunset: {sunset}"
 
 def get_TLV():
+    print("Tel Aviv Weather:")
     city_id= get_id_by_city_name("Tel Aviv", "IL")
     get_weather_by_id(city_id)
 
@@ -111,12 +98,7 @@ def get_TLV_forecast():
     city_id= get_id_by_city_name("Tel Aviv", "IL")
     get_3h_by_id(city_id)
 
-def main():
-    get_TLV()
 
-    city = get_location_input()
-    city_id =get_id_by_city_name(city["city"], city["country"], city["state"])
-    get_weather_by_id(city_id)
 
 # get_TLV_forecast()
 # get_TLV()
@@ -173,12 +155,13 @@ def get_humidity_data_by_id(id):
         daily_humidity[date] = sum(daily_humidity[date]) / len(daily_humidity[date])
     return daily_humidity
 
-def plot_humidity_by_day(daily_humidity):
-    dates = list(daily_humidity.keys())[:3]
-    humidity_values = list(daily_humidity.values())[:3]
-    formatted_dates = [date.strftime('%m/%d') for date in dates]
-    plt.figure(figsize=(10, 5))
-    bars = plt.bar(formatted_dates, humidity_values, color='blue')
+def init_plot():
+    plt.xlabel('Day')
+    plt.ylabel('Humidity (%)')
+    plt.title('Daily Humidity Forecast')
+    plt.xticks(rotation=45)  # Rotate x-axis labels for better readability
+
+def write_humidity_on_bar_chart(bars, humidity_values):
     for bar, value in zip(bars, humidity_values):
         plt.text(
             bar.get_x() + bar.get_width() / 2,  # X position: center of the bar
@@ -189,15 +172,29 @@ def plot_humidity_by_day(daily_humidity):
             color='white',  # Text color
             fontsize=10  # Font size
         )
-    plt.xlabel('Day')
-    plt.ylabel('Humidity (%)')
-    plt.title('Daily Humidity Forecast')
-    plt.xticks(rotation=45)
+
+def plot_humidity_by_day(daily_humidity):
+    dates = list(daily_humidity.keys())[:3]
+    humidity_values = list(daily_humidity.values())[:3]
+    formatted_dates = [date.strftime('%m/%d') for date in dates]
+    plt.figure(figsize=(10, 5))
+    bars = plt.bar(formatted_dates, humidity_values, color='blue')
+    init_plot()
+    write_humidity_on_bar_chart(bars, humidity_values)
     plt.tight_layout()  # Adjust layout to fit labels
     plt.show()
 
-city_id = get_id_by_city_name("Tel Aviv", "IL")
-plot_humidity_by_day(get_humidity_data_by_id(city_id))    
+def main():
+    get_TLV()
+    city = get_location_input()
+    city_id =get_id_by_city_name(city["city"], city["country"], city["state"])
+    get_weather_by_id(city_id)
+    plot_humidity_by_day(get_humidity_data_by_id(city_id))
+# city_id = get_id_by_city_name("Chicago", "US", "IL")
+# plot_humidity_by_day(get_humidity_data_by_id(city_id))    
+
+if __name__ == "__main__":
+    main()
 #     Get the current weather in Tel Aviv.
 #     Get current wind info of Tel Aviv.
 #     Get today’s sunrise and sunset times of Tel Aviv.
