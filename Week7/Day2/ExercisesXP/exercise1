@@ -1,0 +1,44 @@
+-- Database: public
+
+-- DROP DATABASE IF EXISTS public;
+
+-- CREATE DATABASE public
+--     WITH
+--     OWNER = postgres
+--     ENCODING = 'UTF8'
+--     LC_COLLATE = 'en_IL'
+--     LC_CTYPE = 'en_IL'
+--     TABLESPACE = pg_default
+--     CONNECTION LIMIT = -1
+--     IS_TEMPLATE = False;
+
+DROP TABLE IF EXISTS items;
+CREATE TABLE items(
+ item_id SERIAL PRIMARY KEY,
+ item_name VARCHAR (50) NOT NULL,
+ item_description VARCHAR (100),
+ price MONEY NOT NULL,
+ stock SMALLINT DEFAULT 0
+);
+
+DROP TABLE IF EXISTS customers;
+CREATE TABLE customers(
+ customer_id SERIAL PRIMARY KEY,
+ first_name VARCHAR (50) NOT NULL,
+ last_name VARCHAR (100) NOT NULL
+);
+
+INSERT INTO items (item_name, price)
+VALUES ('Small Desk', 100), ('Large Desk', 300), ('Fan', 80);
+
+INSERT INTO customers (first_name, last_name)
+VALUES ('Greg', 'Jones'), ('Sandra', 'Jones'), ('Scott', 'Scott'), ('Trevor', 'Green'), ('Melanie', 'Johnson');
+
+-- Since only one select can be active at a time, please uncomment one by one to test, recommenting after running
+-- SELECT item_id, item_name, price FROM items;
+-- SELECT item_id, item_name, price FROM items WHERE price::numeric > 80;
+-- SELECT item_id, item_name, price FROM items WHERE price::numeric <= 300;
+-- Noone has that last name in the table
+-- SELECT customer_id, first_name, last_name FROM customers where last_name like 'Smith' 
+-- SELECT customer_id, first_name, last_name FROM customers where last_name like 'Jones'
+ SELECT customer_id, first_name, last_name FROM customers where first_name not like 'Scott'
