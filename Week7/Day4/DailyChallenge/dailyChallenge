@@ -1,0 +1,23 @@
+
+-- Q1. What will be the OUTPUT of the following statement?
+-- 0 because null comparison is unkown
+ --    SELECT COUNT(*) 
+ --    FROM firsttab AS ft 
+	-- WHERE ft.id NOT IN ( SELECT id FROM secondtab WHERE id IS NULL )
+
+-- Q2. What will be the OUTPUT of the following statement?
+-- 2, for the same reason but only one null value is compared vs all of them, and the 5 is excluded
+    -- SELECT COUNT(*) 
+    -- FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id = 5 )
+
+
+-- Q3. What will be the OUTPUT of the following statement?
+-- 0 for the same reason as Q1
+--     SELECT COUNT(*) 
+--     FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab )
+
+
+-- Q4. What will be the OUTPUT of the following statement?
+-- 2, since that's the same as Q2
+    SELECT COUNT(*) 
+    FROM FirstTab AS ft WHERE ft.id NOT IN ( SELECT id FROM SecondTab WHERE id IS NOT NULL )
