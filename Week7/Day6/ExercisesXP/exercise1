@@ -1,0 +1,59 @@
+
+-- Get a list of all the languages, from the language table.
+-- select name from language;
+
+-- Get a list of all films joined with their languages – select the following details : film title, description, and language name.
+-- select film.title, film.description, language.name
+-- from film
+-- inner join language
+-- on film.language_id = language.language_id;
+-- Get all languages, even if there are no films in those languages – select the following details : film title, description, and language name.
+-- You'll need to scroll since it does the valid ones first
+-- select film.title, film.description, language.name
+-- from language
+-- left join film
+-- on film.language_id = language.language_id;
+-- Create a new table called new_film with the following columns : id, name. Add some new films to the table.
+
+-- CREATE TABLE new_film
+-- (
+-- 	id serial primary key,
+-- 	name varchar(50)
+-- );
+-- insert into new_film (name)
+-- values ('Harry Potter'), ('Star Wars'), ('LOTR');
+
+-- Create a new table called customer_review, which will contain film reviews that customers will make.
+-- Think about the DELETE constraint: if a film is deleted, its review should be automatically deleted.
+-- It should have the following columns:
+-- 	review_id – a primary key, non null, auto-increment.
+-- 	film_id – references the new_film table. The film that is being reviewed.
+-- 	language_id – references the language table. What language the review is in.
+-- 	title – the title of the review.
+-- 	score – the rating of the review (1-10).
+-- 	review_text – the text of the review. No limit on the length.
+-- 	last_update – when the review was last updated.
+-- CREATE TABLE customer_review
+-- (
+-- 	review_id SERIAL PRIMARY KEY, --PK includes not null
+-- 	film_id INT,
+-- 	language_id INT,
+-- 	title varchar(50),
+-- 	score INT,
+-- 	review_text TEXT,
+-- 	last_update DATE DEFAULT CURRENT_DATE,
+-- 	FOREIGN KEY(film_id) REFERENCES new_film(id) ON DELETE CASCADE,
+-- 	FOREIGN KEY(language_id) REFERENCES language(language_id),
+-- 	CHECK (score >= 1 AND score <= 10)
+-- );
+-- select * from customer_review;
+
+-- Add 2 movie reviews. Make sure you link them to valid objects in the other tables.
+-- insert into customer_review(film_id, language_id, title, score, review_text)
+-- values(1, 1, 'HP Sucks', 2, 'I hate HP! It''s not easy enough to get versions in Hebrew!'),
+-- (3, 1, 'Lord of the Rings is amazing', 10, 'I love LOTR!. I wish there was more source material so decent sequels and prequels could be made');
+
+-- Delete a film that has a review from the new_film table, what happens to the customer_review table?
+-- select * from customer_review; -- There were 2
+-- delete from new_film where id = 1;
+-- select * from customer_review; -- there is 1
