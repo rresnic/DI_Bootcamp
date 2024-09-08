@@ -1,0 +1,44 @@
+-- CREATE TABLE IF NOT EXISTS customer
+-- (
+--     id serial primary key,
+--     first_name character varying(50),
+--     last_name character varying(50) NOT NULL
+-- );
+-- CREATE TABLE customer_profile (
+-- 	id serial,
+-- 	isLoggedIn boolean default false,
+-- 	customer_id int,
+-- 	FOREIGN KEY(customer_id) references customer(id) 
+-- );
+-- INSERT INTO customer (first_name, last_name) 
+-- VALUES ('John', 'Doe'), ('Jerome', 'Lalu'), ('Lea', 'Rive');
+-- select * from customer;
+-- INSERT INTO customer_profile(customer_id, isLoggedIn)
+-- select  customer.id, true
+-- from customer
+-- where customer.first_name = 'John'
+-- UNION ALL 
+-- select customer.id, false
+-- from customer
+-- where customer.first_name = 'Jerome'
+-- select * from customer_profile
+    -- The first_name of the LoggedIn customers
+-- select customer.first_name
+-- from customer_profile
+-- inner join customer 
+-- on customer.id = customer_profile.customer_id 
+-- where customer_profile.isLoggedIn = true;
+
+-- All the customers first_name and isLoggedIn columns - even the customers those who don’t have a profile.
+-- select customer.first_name, customer_profile.isLoggedIn
+-- from customer
+-- left join customer_profile 
+-- on customer.id = customer_profile.customer_id ;
+
+-- The number of customers that are not LoggedIn
+-- select count(*)
+-- from customer
+-- where id not in 
+-- (select customer_id
+-- from customer_profile
+-- where not isLoggedIn);
