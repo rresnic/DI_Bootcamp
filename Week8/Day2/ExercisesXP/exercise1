@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS menu_items(
+	item_id SERIAL PRIMARY KEY,
+	item_name varchar(30) NOT NULL,
+	item_price SMALLINT DEFAULT 0
+);
+select * from menu_items;
