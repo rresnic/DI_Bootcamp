@@ -9,11 +9,17 @@ console.log(numbersJoinStringPlus)
 let numbersJoinStringSpace = numbers.join(" ");
 console.log(numbersJoinStringSpace)
 
+// You only need to loop up until the last index because the inner loop checks one step ahead
 for(let i = 0; i < numbers.length -1; i++){
+    // you only need to loop up until the last sorted index
     for(let j = 0; j < numbers.length -1 - i; j++){
+        // if the current number is smaller, swap it forward. The goal is to have the smallest numbers on the right
         if(numbers[j] < numbers[j + 1]){
+            // save the array value you are replacing in a temp
             let temp = numbers[j]
+            // copy the larger number into the earlier index
             numbers[j] = numbers[j+1]
+            // cioy the smaller number back into the array, but at the next index
             numbers[j+1] = temp
         }
     }
