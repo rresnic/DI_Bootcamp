@@ -1,0 +1,61 @@
+body {
+    display: flex;
+}
+
+.color-option {
+    display: none;
+    /* Hide the actual radio buttons */
+}
+
+.color-picker {
+    width: 20%;
+    aspect-ratio: 3/5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.color-label {
+    flex: 0 1 calc(33.33% - 10px);
+    aspect-ratio: 1/1;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    /* Show pointer on hover */
+    border: 2px inset grey;
+    transition: border 0.3s ease;
+}
+.color-picker > button {
+    flex: 0 1 calc(33.33% - 10px);
+    aspect-ratio: 2/3;
+}
+.color-option:checked+.color-label {
+    border-color: magenta;
+    border-style: dashed;
+    box-shadow: 10px 10px 10px rgba(143, 11, 11, 0.5);
+}
+
+.custom-color-label {
+    background-color: rgba(0,0,0,0);
+    border: 2px inset #ccc;
+}
+.colorpick-eyedropper-input-trigger {
+    display: none;
+}
+
+#canvas {
+    display: grid;
+    width: 80vh;
+    aspect-ratio: 1 / 1;
+    grid-template-columns: repeat(30, 1fr);
+    border: 1px solid #000;
+}
+
+.cell {
+    /* optional grid lines */
+    /* border: 1px solid #ddd; */
+    background-color: white;
+    cursor: pointer;
+    /* Show pointer on hover */
+}
