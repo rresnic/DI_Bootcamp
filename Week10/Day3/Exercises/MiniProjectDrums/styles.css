@@ -1,0 +1,18 @@
+html,
+body {
+    height: 100%;
+    /* Ensure html and body take full height */
+    margin: 0;
+    /* Remove default margin */
+}
+.drum {
+    text-align: center;
+    margin: 20px;
+    border: 2px solid teal;
+    padding: 10px;
+    min-width:50px;
+}
+.drum.active {
+    border-color: gold;
+    box-shadow: 1px 1px 5px magenta;
+}
