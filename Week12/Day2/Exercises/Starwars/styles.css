@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'distant_galaxyregular';
+    src: url('DISTGRG_-webfont.eot');
+    src: url('DISTGRG_-webfont.eot?#iefix') format('embedded-opentype'),
+        url('DISTGRG_-webfont.woff2') format('woff2'),
+        url('DISTGRG_-webfont.woff') format('woff'),
+        url('DISTGRG_-webfont.ttf') format('truetype'),
+        url('DISTGRG_-webfont.svg#distant_galaxyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.starwars-outline{
+    font-family: 'distant_galaxyregular';
+    text-align: center;
+    color: black;
+    font-size:4rem;
+    text-shadow:
+        -1px -1px 0 goldenrod,
+        1px -1px 0 goldenrod,
+        -1px 1px 0 goldenrod,
+        1px 1px 0 goldenrod;
+    margin-bottom: 0px;
+
+}
+
+
+body {
+    background-image: url("starryback.jpg");
+    background-size: cover;
+    color: white;
+}
+
+#infobox {
+    border: 2px solid yellow;
+    height: 200px;
+    width: 300px;
+    margin: auto;
+    text-align:center;
+}
+
+#generateBtn {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-top:1em;
+}
