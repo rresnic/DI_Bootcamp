@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <style>
+        /* generated CSS */
+        body {
+            font-family: Arial, sans-serif;
+            /* Font for the entire page */
+            background-color: #f4f4f4;
+            /* Light background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            /* Center the content horizontally */
+            align-items: center;
+            /* Center the content vertically */
+            height: 100vh;
+            /* Full viewport height */
+        }
+
+        .container {
+            text-align: center;
+            /* Center the header and form text */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            /* Space below the header */
+        }
+
+        #conversionForm {
+            background-color: white;
+            /* White background for the form */
+            padding: 20px;
+            /* Padding inside the form */
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Subtle shadow */
+            width: 300px;
+            /* Set a fixed width for the form */
+            margin: 0 auto;
+            /* Center the form */
+        }
+
+        label {
+            display: block;
+            /* Each label on a new line */
+            font-size: 1.2em;
+            /* Larger font size for labels */
+            margin-bottom: 5px;
+            /* Space below each label */
+        }
+
+        select,
+        input[type="number"],
+        button {
+            width: 100%;
+            /* Full width for inputs and buttons */
+            padding: 10px;
+            /* Padding inside inputs and buttons */
+            margin-bottom: 15px;
+            /* Space below each input/button */
+            border: 1px solid #ccc;
+            /* Border for inputs and buttons */
+            border-radius: 4px;
+            /* Rounded corners for inputs and buttons */
+            font-size: 1em;
+            /* Font size for inputs and buttons */
+        }
+
+        button {
+            background-color: #28a745;
+            /* Green background for the button */
+            color: white;
+            /* White text for the button */
+            border: none;
+            /* Remove border */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            font-size: 1.1em;
+            /* Slightly larger font for button */
+        }
+
+        button:hover {
+            background-color: #218838;
+            /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Welcome to the Currency Converter</h1>
+        </header>
+
+        <main>
+            <form id="conversionForm">
+                <label for="fromCur">From</label>
+                <select name="fromCur" id="fromCur"></select>
+
+                <label for="toCur">To</label>
+                <select name="toCur" id="toCur"></select>
+
+                <label for="amountFrom">Amount</label>
+                <input type="number" name="amountFrom" id="amountFrom" placeholder="Amount to convert">
+
+                <label for="convertedAmount">Converted Amount</label>
+                <input type="number" name="convertedAmount" id="convertedAmount" readonly>
+
+                <button type="button" id="convertBtn">Convert</button>
+            </form>
+        </main>
+    </div>
+<script src="script.js"></script>
+</body>
+
+</html>
