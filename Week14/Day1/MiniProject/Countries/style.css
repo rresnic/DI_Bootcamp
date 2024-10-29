@@ -1,0 +1,17 @@
+#allCountries {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#allCountries > figure {
+    flex: 1 1 25%;
+    max-width: 10vw;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+#allCountries > figure > img {
+    max-width: 100%;
+    height: auto;
+}
