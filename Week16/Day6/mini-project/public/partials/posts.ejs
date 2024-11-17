@@ -1,0 +1,13 @@
+<div id="posts">
+    <h2>Post Feed</h2>
+    <% posts.forEach(post => { %>
+        <div class="post" id="post-<%= post.id %>">
+            <h2><%= post.title %></h2>
+            <a href="<%= post.link %>"><h4><%= post.link %></h4></a>
+            <h4>Author: <%= post.creator %></h4>
+            <h4>Published: <%= post.pubDate%></h4>
+            <h4>Categories: <%= post.categories.join(',') %></h4>
+            <p><%- post.content %></p>
+        </div>   
+    <% }) %>
+</div>

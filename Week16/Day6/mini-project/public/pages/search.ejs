@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts feed search</title>
+    <%- include("../partials/head") %>
+</head>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <div class="container mt-4">
+            <h2>Search Posts</h2>
+    
+            <!-- Search Form -->
+            <form action="/search/title" method="POST" class="mb-3">
+                <div class="mb-3">
+                    <input type="text" name="title" class="form-control" placeholder="Search by title">
+                </div>
+                <button type="submit" class="btn btn-primary">Search by Title</button>
+            </form>
+    
+            <form action="/search/category" method="POST" class="mb-3">
+                <div class="mb-3">
+                    <select name="category" class="form-control">
+                        <option value="">Select Category</option>
+                        <option value="Energy">Energy</option>
+                        <option value="Solar System">Solar System</option>
+                        <option value="Health">Health</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search by Category</button>
+            </form>
+        <%- include("../partials/posts", {posts}) %>
+        </div>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
