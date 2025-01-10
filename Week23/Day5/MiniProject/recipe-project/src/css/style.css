@@ -1,0 +1,77 @@
+.hidden {
+    display:none !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  input,
+  button {
+    font: inherit;
+  }
+  
+  html {
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .button {
+    border-radius: 10px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .button:hover {
+    cursor: pointer;
+  }
+  
+  
+  .item > input[type="checkbox"] {
+    text-align: center;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    cursor: pointer;
+  }
+  
+  .item > input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+  }
+  
+  .item > label {
+    flex-grow: 1;
+    word-break: break-all;
+  }
+  
+  .item > button:hover,
+  .item > button:focus {
+    color: red;
+  }
+  
+
+/* Hide the default checkbox */
+.heart-checkbox input {
+    display: none;
+  }
+/* Style the heart */
+.heart-checkbox .heart-icon svg {
+    cursor: pointer;
+    transition: transform 0.3s ease, fill 0.3s ease;
+    fill: black; /* Default color: black when unchecked */
+  }
+  
+  /* Change to red when checked */
+  .heart-checkbox input:checked + .heart-icon svg {
+    fill: red; /* Red when checked */
+    transform: scale(1.2); /* Grow the heart slightly when checked */
+  }
