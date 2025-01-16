@@ -13,9 +13,17 @@ module.exports = {
             })
         } catch (error) {
             console.log(error);
-            res.status(500).json({
-                message: "Internal Server Error"
-            })
+            if(error.code === "23505") {
+                res.status(500).json({
+                    message: "Email already exists"
+                })
+            }
+            else {
+                res.status(500).json({
+                    message: "Internal Server Error"
+                })
+            }
+            
             
         }
     },
